@@ -19,7 +19,15 @@
     <header>
         <div class="header-container">
             <a href="/" class="logo">Taafeef</a>
-            <nav>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+            
+            <nav class="nav-container">
                 <ul class="nav-links">
                     <li><a href="/" class="active">Home</a></li>
                     <li><a href="/about">About</a></li>
@@ -30,33 +38,82 @@
                     <li><a href="/contact">Contact</a></li>
                     <li><a href="/socials">Socials</a></li>
                 </ul>
+                <div class="nav-active-indicator"></div>
             </nav>
-            <button class="theme-toggle" id="themeToggle">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
-            </button>
-            <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Video Background -->
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-digital-background-4664-large.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
-                <h1>Taafeef Bin Montaquim</h1>
-                <h2>UI/UX Designer & Front-End Developer</h2>
-                <p>Crafting digital experiences that resonate. I create sleek, smooth-running interfaces with a focus on
-                    clean visuals and performance.</p>
-                <div class="hero-btns">
-                    <a href="/projects" class="btn">View My Work</a>
-                    <a href="/contact" class="btn btn-outline">Get In Touch</a>
+                <div class="hero-text" data-aos="fade-up">
+                    <h1 class="gradient-text">Taafeef Bin Montaquim</h1>
+                    <h2>UI/UX Designer & Front-End Developer</h2>
+                    <p class="lead">Crafting digital experiences that resonate. I create sleek, smooth-running interfaces with a focus on clean visuals and performance.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn btn-primary" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-code"></i> View My Work
+                        </a>
+                        <a href="#contact" class="btn btn-outline" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-paper-plane"></i> Get In Touch
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 3D Element -->
+                <div class="hero-3d" data-aos="fade-left" data-aos-delay="300">
+                    <div class="cube">
+                        <div class="face front">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="face back">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="face right">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="face left">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="face top">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="face bottom">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Floating Shapes -->
         <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
+            <div class="shape shape-1" data-depth="0.2"></div>
+            <div class="shape shape-2" data-depth="0.4"></div>
+            <div class="shape shape-3" data-depth="0.6"></div>
+            <div class="shape shape-4" data-depth="0.3"></div>
+            <div class="shape shape-5" data-depth="0.5"></div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="scroll-down">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow"></div>
         </div>
     </section>
 
