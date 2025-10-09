@@ -4,29 +4,33 @@
 
 :root {
     /* ===== Color System ===== */
-    /* Light Mode Colors - Solar Flare */
-    --bg-light: #FFF8F0;
-    --surface-light: #FFFFFF;
-    --primary-light: #FF6B35;
-    --accent-light: #F7C59F;
-    --text-light: #2D3436;
-    --header-bg-light: rgba(255, 255, 255, 0.98);
-    --card-bg-light: rgba(255, 255, 255, 0.7);
+    /* Light Mode Colors - Modern & Clean */
+    --bg-light: #FFFFFF;
+    --surface-light: #F8FAFC;
+    --primary-light: #3B82F6;  /* Blue-500 */
+    --accent-light: #60A5FA;   /* Blue-400 */
+    --text-light: #1E293B;     /* Slate-800 */
+    --text-secondary-light: #64748B; /* Slate-500 */
+    --header-bg-light: rgba(255, 255, 255, 0.95);
+    --card-bg-light: #FFFFFF;
+    --border-light: #E2E8F0;   /* Slate-200 */
     
-    /* Dark Mode Colors - Solar Flare Dark */
-    --bg-dark: #1A1A1A;
-    --surface-dark: #262626;
-    --primary-dark: #FF8C42;
-    --accent-dark: #FFB86F;
-    --text-dark: #F0F0F0;
-    --header-bg-dark: rgba(26, 26, 26, 0.98);
-    --card-bg-dark: rgba(38, 38, 38, 0.7);
+    /* Dark Mode Colors - Deep Blue */
+    --bg-dark: #0F172A;        /* Slate-900 */
+    --surface-dark: #1E293B;   /* Slate-800 */
+    --primary-dark: #60A5FA;   /* Blue-400 */
+    --accent-dark: #93C5FD;    /* Blue-300 */
+    --text-dark: #F1F5F9;      /* Slate-100 */
+    --text-secondary-dark: #94A3B8; /* Slate-400 */
+    --header-bg-dark: rgba(15, 23, 42, 0.95);
+    --card-bg-dark: #1E293B;   /* Slate-800 */
+    --border-dark: #334155;    /* Slate-700 */
     
     /* RGB Values for Alpha Channels */
-    --primary-rgb: 255, 107, 53;
-    --accent-rgb: 247, 197, 159;
-    --primary-dark-rgb: 255, 140, 66;
-    --accent-dark-rgb: 255, 184, 111;
+    --primary-rgb: 59, 130, 246;     /* Blue-500 */
+    --accent-rgb: 96, 165, 250;      /* Blue-400 */
+    --primary-dark-rgb: 96, 165, 250; /* Blue-400 */
+    --accent-dark-rgb: 147, 197, 253; /* Blue-300 */
     
     /* Default to Light Mode */
     --bg: var(--bg-light);
@@ -34,8 +38,10 @@
     --primary: var(--primary-light);
     --accent: var(--accent-light);
     --text: var(--text-light);
+    --text-secondary: var(--text-secondary-light);
     --header-bg: var(--header-bg-light);
     --card-bg: var(--card-bg-light);
+    --border: var(--border-light);
     --primary-rgb: var(--primary-light-rgb);
     --accent-rgb: var(--accent-light-rgb);
     
@@ -86,10 +92,15 @@
     --primary: var(--primary-dark);
     --accent: var(--accent-dark);
     --text: var(--text-dark);
+    --text-secondary: var(--text-secondary-dark);
     --header-bg: var(--header-bg-dark);
     --card-bg: var(--card-bg-dark);
+    --border: var(--border-dark);
     --primary-rgb: var(--primary-dark-rgb);
     --accent-rgb: var(--accent-dark-rgb);
+    
+    /* Dark mode specific adjustments */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* Base Reset */
@@ -106,19 +117,24 @@ html {
     height: 100%;
 }
 
-/* Base Typography */
 body {
     font-family: var(--font-body);
     line-height: 1.6;
     color: var(--text);
     background-color: var(--bg);
-    transition: background-color var(--transition-normal), color var(--transition-normal);
+    transition: background-color var(--transition-normal), 
+                color var(--transition-normal),
+                border-color var(--transition-normal);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
+    --bg-dark: #1A202C; /* Darker background for better contrast */
+    --text-dark: #F1F5F9; /* Lighter text for better contrast */
+    --primary-dark: #3B82F6; /* Darker primary color for better contrast */
+    --accent-dark: #60A5FA; /* Darker accent color for better contrast */
+    --border-dark: #334155; /* Darker border color for better contrast */
 }
-
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
@@ -174,21 +190,29 @@ a:hover {
 .btn-primary {
     background: var(--primary);
     color: white;
-    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
+    border: 2px solid var(--primary);
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
 }
 
 .btn-primary:hover {
     background: transparent;
     color: var(--primary);
-    border-color: var(--primary);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+    box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
 }
 
 .btn-outline {
     background: transparent;
     border: 2px solid var(--primary);
     color: var(--primary);
+    transition: all var(--transition-normal);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.3);
 }
 
 .btn-outline:hover {
