@@ -47,7 +47,46 @@ fadeInOnScroll();
 
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-const navLinksContainer = document.querySelector(".nav-links");
+const navContainer = document.querySelector(".nav-container");
+
+// Toggle mobile menu
+function toggleMobileMenu() {
+    mobileMenuBtn.classList.toggle('active');
+    navContainer.classList.toggle('active');
+    document.body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
+}
+
+// Close mobile menu when clicking on a nav link
+function closeMobileMenu() {
+    mobileMenuBtn.classList.remove('active');
+    navContainer.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Initialize mobile menu
+if (mobileMenuBtn && navContainer) {
+    // Toggle menu on button click
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const isClickInside = navContainer.contains(e.target) || mobileMenuBtn.contains(e.target);
+        if (!isClickInside && navContainer.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+    
+    // Close menu when window is resized to desktop
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (window.innerWidth > 992) {
+                closeMobileMenu();
+            }
+        }, 250);
+    });
+}
 
 // Navigation with sliding underline effect and page transitions
 function initNavigation() {
