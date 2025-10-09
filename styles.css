@@ -124,17 +124,27 @@ h3 {
 /* Base link styles */
 /* Base link styles */
 a {
-    color: var(--primary);
-    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
-    position: relative;
-    font-weight: 500;
-    display: inline-block;
+    border: 2px solid transparent;
+    cursor: pointer;
+    line-height: 1.5;
 }
 
 a:hover {
-    color: var(--accent);
-    transform: translateY(-2px);
+    background-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    color: white;
 }
 
 a:focus {
