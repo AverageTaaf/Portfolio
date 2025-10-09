@@ -57,10 +57,16 @@ function initNavigation() {
     let currentPageIndex = 0;
     
     // Set initial current page index
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = window.location.pathname;
     navLinks.forEach((link, index) => {
         const linkHref = link.getAttribute('href');
-        if (linkHref === currentPath || (currentPath === '' && linkHref === 'index.html')) {
+        // Handle home page (empty path or '/')
+        if ((currentPath === '/' || currentPath === '') && (linkHref === '/' || linkHref === '/index.html' || linkHref === 'index.html')) {
+            currentPageIndex = index;
+            link.classList.add('active');
+        } 
+        // Handle other pages
+        else if (currentPath === linkHref || (currentPath + '.html' === linkHref)) {
             currentPageIndex = index;
             link.classList.add('active');
         } else {
@@ -112,7 +118,9 @@ function initNavigation() {
             const currentPath = window.location.pathname.split('/').pop() || 'index.html';
             
             // Don't do anything if clicking the current page link
-            if (href === currentPath) {
+            if (href === currentPath || 
+                (currentPath === '/' && (href === '/index.html' || href === 'index.html')) ||
+                (currentPath + '.html' === href)) {
                 e.preventDefault();
                 return;
             }
@@ -164,10 +172,17 @@ function initNavigation() {
         }
         
         // Update active state based on current URL
-        const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const currentPath = window.location.pathname;
         navLinks.forEach((link, index) => {
             const linkHref = link.getAttribute('href');
-            if (linkHref === currentPath || (currentPath === '' && linkHref === 'index.html')) {
+            // Handle home page (empty path or '/')
+            if ((currentPath === '/' || currentPath === '') && (linkHref === '/' || linkHref === '/index.html' || linkHref === 'index.html')) {
+                currentPageIndex = index;
+                link.classList.add('active');
+                updateIndicatorPosition(link);
+            } 
+            // Handle other pages
+            else if (currentPath === linkHref || (currentPath + '.html' === linkHref)) {
                 currentPageIndex = index;
                 link.classList.add('active');
                 updateIndicatorPosition(link);
