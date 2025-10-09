@@ -6,21 +6,25 @@
 }
 
 :root {
-    /* Light Mode Colors */
+    /* Light Mode Colors - Solar Flare */
     --bg-light: #FFF8F0;
     --surface-light: #FFFFFF;
     --primary-light: #FF6B35;
     --accent-light: #F7C59F;
     --text-light: #2D3436;
     --header-bg: rgba(255, 255, 255, 0.95);
+    --primary-rgb: 255, 107, 53;
+    --accent-rgb: 247, 197, 159;
 
-    /* Dark Mode Colors */
+    /* Dark Mode Colors - Solar Flare Dark */
     --bg-dark: #1A1A1A;
     --surface-dark: #262626;
     --primary-dark: #FF8C42;
     --accent-dark: #FFB86F;
     --text-dark: #F0F0F0;
     --header-bg-dark: rgba(26, 26, 26, 0.98);
+    --primary-dark-rgb: 255, 140, 66;
+    --accent-dark-rgb: 255, 184, 111;
 
     /* Default to Light Mode */
     --bg: var(--bg-light);
@@ -29,10 +33,12 @@
     --accent: var(--accent-light);
     --text: var(--text-light);
     --header-bg: var(--header-bg);
+    --primary-rgb: var(--primary-light-rgb);
+    --accent-rgb: var(--accent-light-rgb);
 
     /* Typography */
-    --heading-font: 'Poppins', 'Segoe UI', sans-serif;
-    --body-font: 'Inter', 'Segoe UI', sans-serif;
+    --heading-font: 'Atkinson Hyperlegible', 'Alan Sans', sans-serif;
+    --body-font: 'Ubuntu', 'Comic Relief', system-ui, sans-serif;
 
     /* Spacing */
     --section-padding: 6rem 1.5rem;
@@ -55,7 +61,8 @@
 }
 
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/alan-den-engelsen');
 
 .dark-mode {
     --bg: var(--bg-dark);
@@ -124,27 +131,17 @@ h3 {
 /* Base link styles */
 /* Base link styles */
 a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary);
-    color: white;
-    padding: 0.75rem 1.75rem;
-    border-radius: var(--radius-md);
-    font-weight: 600;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
+    color: var(--primary);
+    text-decoration: none;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
-    cursor: pointer;
-    line-height: 1.5;
+    position: relative;
+    font-weight: 500;
+    display: inline-block;
 }
 
 a:hover {
-    background-color: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
-    color: white;
+    color: var(--accent);
+    transform: translateY(-2px);
 }
 
 a:focus {
@@ -781,20 +778,286 @@ body[data-page="home"] .nav-links a[href="/"]::after {
 }
 
 /* Hero Section */
-/* Hero Section */
 .hero {
+    position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    position: relative;
+    overflow: hidden;
+    color: var(--text);
+}
+
+/* Video Background */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     overflow: hidden;
 }
 
+.video-background video {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.9) 0%, rgba(247, 197, 159, 0.7) 100%);
+    mix-blend-mode: multiply;
+}
+
 .hero-content {
-    max-width: 800px;
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+    max-width: 700px;
+}
+
+.hero-3d {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    perspective: 1000px;
+    margin: 0 auto;
+}
+
+/* 3D Cube */
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    animation: rotate 20s infinite linear;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.face i {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+}
+
+.front { transform: translateZ(100px); }
+.back { transform: rotateY(180deg) translateZ(100px); }
+.right { transform: rotateY(90deg) translateZ(100px); }
+.left { transform: rotateY(-90deg) translateZ(100px); }
+.top { transform: rotateX(90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+@keyframes rotate {
+    from { transform: rotateX(-15deg) rotateY(0deg); }
+    to { transform: rotateX(-15deg) rotateY(360deg); }
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Hero Buttons */
+.hero-btns {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: 2px solid var(--primary);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primary);
+    transform: translateY(-3px);
+}
+
+/* Scroll Down Indicator */
+.scroll-down {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 15px;
+    position: relative;
+    margin: 0 auto 10px;
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: white;
+    border-radius: 2px;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll 2s infinite;
+}
+
+.arrow {
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(45deg);
+    margin: 0 auto;
+    animation: arrow 2s infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translate(-50%, 0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translate(-50%, 15px); opacity: 0; }
+}
+
+@keyframes arrow {
+    0% { opacity: 0; transform: rotate(45deg) translate(-5px, -5px); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: rotate(45deg) translate(5px, 5px); }
+}
+
+/* Floating Shapes */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    animation: float 15s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: -100px;
+    right: -100px;
+    background: radial-gradient(circle, rgba(255,107,53,0.3) 0%, rgba(255,107,53,0) 70%);
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    left: -50px;
+    background: radial-gradient(circle, rgba(247,197,159,0.3) 0%, rgba(247,197,159,0) 70%);
+    animation-delay: 5s;
+}
+
+.shape-3 {
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    right: -200px;
+    background: radial-gradient(circle, rgba(255,184,111,0.2) 0%, rgba(255,184,111,0) 70%);
+    animation-delay: 10s;
+}
+
+.shape-4 {
+    width: 150px;
+    height: 150px;
+    top: 30%;
+    left: -50px;
+    background: radial-gradient(circle, rgba(255,140,66,0.2) 0%, rgba(255,140,66,0) 70%);
+    animation-delay: 7s;
+}
+
+.shape-5 {
+    width: 100px;
+    height: 100px;
+    bottom: 20%;
+    right: 20%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    animation-delay: 3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+/* Dark Mode Adjustments */
+.dark-mode .video-overlay {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(38, 38, 38, 0.7) 100%);
+}
+
+.dark-mode .shape {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.hero-content {
+    max-width: 1400px;
+    width: 100%;
     margin: 0 auto;
     position: relative;
     z-index: 2;
