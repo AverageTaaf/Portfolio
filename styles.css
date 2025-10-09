@@ -7,24 +7,28 @@
     /* Light Mode Colors - Modern & Clean */
     --bg-light: #FFFFFF;
     --surface-light: #F8FAFC;
-    --primary-light: #3B82F6;  /* Blue-500 */
-    --accent-light: #60A5FA;   /* Blue-400 */
-    --text-light: #1E293B;     /* Slate-800 */
-    --text-secondary-light: #64748B; /* Slate-500 */
-    --header-bg-light: rgba(255, 255, 255, 0.95);
+    --primary-light: #2563EB;  /* Slightly darker blue for better contrast */
+    --accent-light: #3B82F6;   /* Blue-500 */
+    --text-light: #0F172A;     /* Darker slate-900 for better contrast */
+    --text-secondary-light: #475569; /* Slate-600 for better contrast */
+    --header-bg-light: rgba(255, 255, 255, 0.98); /* More opaque */
     --card-bg-light: #FFFFFF;
     --border-light: #E2E8F0;   /* Slate-200 */
+    --nav-text-light: #1E293B; /* Explicit nav text color */
+    --nav-hover-light: #3B82F6; /* Primary color for nav hover */
     
     /* Dark Mode Colors - Deep Blue */
-    --bg-dark: #0F172A;        /* Slate-900 */
-    --surface-dark: #1E293B;   /* Slate-800 */
+    --bg-dark: #020617;        /* Darker slate-950 */
+    --surface-dark: #0F172A;   /* Slightly darker slate-900 */
     --primary-dark: #60A5FA;   /* Blue-400 */
     --accent-dark: #93C5FD;    /* Blue-300 */
-    --text-dark: #F1F5F9;      /* Slate-100 */
-    --text-secondary-dark: #94A3B8; /* Slate-400 */
-    --header-bg-dark: rgba(15, 23, 42, 0.95);
+    --text-dark: #F8FAFC;      /* Brighter text for better contrast */
+    --text-secondary-dark: #A8B3CF; /* Lighter gray for better contrast */
+    --header-bg-dark: rgba(2, 6, 23, 0.98); /* Darker and more opaque */
     --card-bg-dark: #1E293B;   /* Slate-800 */
-    --border-dark: #334155;    /* Slate-700 */
+    --border-dark: #1E293B;    /* Darker border */
+    --nav-text-dark: #E2E8F0;  /* Brighter nav text */
+    --nav-hover-dark: #60A5FA; /* Brighter blue for nav hover */
     
     /* RGB Values for Alpha Channels */
     --primary-rgb: 59, 130, 246;     /* Blue-500 */
@@ -721,6 +725,10 @@ header {
 }
 
 .nav-links a {
+    color: var(--nav-text, var(--text));
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
     color: var(--text);
     font-weight: 600;
     font-size: 0.85rem;
