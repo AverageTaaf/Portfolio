@@ -1,6 +1,7 @@
 /* CSS Reset and Base Styles */
-@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 @import url('https://fonts.cdnfonts.com/css/alan-den-engelsen');
+@import url('https://fonts.cdnfonts.com/css/comic-relief');
 
 :root {
     /* ===== Color System ===== */
@@ -8,8 +9,9 @@
     --bg-light: #FFFFFF;
     --surface-light: #F8FAFC;
     --primary-light: #2563EB;
-    /* Slightly darker blue for better contrast */
+    --primary-light-hover: #1D4ED8;
     --accent-light: #3B82F6;
+    --accent-light-hover: #2563EB;
     /* Blue-500 */
     --text-light: #0F172A;
     /* Darker slate-900 for better contrast */
@@ -27,12 +29,11 @@
 
     /* Dark Mode Colors - Deep Blue */
     --bg-dark: #020617;
-    /* Darker slate-950 */
     --surface-dark: #0F172A;
-    /* Slightly darker slate-900 */
     --primary-dark: #60A5FA;
-    /* Blue-400 */
+    --primary-dark-hover: #3B82F6;
     --accent-dark: #93C5FD;
+    --accent-dark-hover: #60A5FA;
     /* Blue-300 */
     --text-dark: #F8FAFC;
     /* Brighter text for better contrast */
@@ -73,8 +74,8 @@
     --accent-rgb: var(--accent-light-rgb);
 
     /* Typography */
-    --font-heading: 'Atkinson Hyperlegible', 'Alan Sans', system-ui, -apple-system, sans-serif;
-    --font-body: 'Ubuntu', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Alan Sans', 'Atkinson Hyperlegible', system-ui, -apple-system, sans-serif;
+    --font-body: 'Ubuntu', 'Comic Relief', system-ui, -apple-system, sans-serif;
     --font-mono: 'Ubuntu Mono', 'Courier New', monospace;
 
     /* Spacing */
@@ -119,7 +120,9 @@
     --bg: var(--bg-dark);
     --surface: var(--surface-dark);
     --primary: var(--primary-dark);
+    --primary-hover: var(--primary-dark-hover);
     --accent: var(--accent-dark);
+    --accent-hover: var(--accent-dark-hover);
     --text: var(--text-dark);
     --text-secondary: var(--text-secondary-dark);
     --header-bg: var(--header-bg-dark);
@@ -127,9 +130,16 @@
     --border: var(--border-dark);
     --primary-rgb: var(--primary-dark-rgb);
     --accent-rgb: var(--accent-dark-rgb);
+    
+    /* Smooth theme transition */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
 
-    /* Dark mode specific adjustments */
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+/* Light mode specific adjustments */
+:root, [data-theme="light"] {
+    --primary-hover: var(--primary-light-hover);
+    --accent-hover: var(--accent-light-hover);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Base Reset */
@@ -146,6 +156,26 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     height: 100%;
+    scroll-padding-top: 6rem; /* Account for fixed header */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }
 
 body {
@@ -219,12 +249,29 @@ p {
 a {
     color: var(--primary);
     text-decoration: none;
-    transition: color var(--transition-fast);
+    transition: all var(--transition-normal) ease;
+    position: relative;
+    font-weight: 500;
 }
 
-a:hover {
-    color: var(--accent);
-    text-decoration: underline;
+a:not(.btn):hover {
+    color: var(--accent-hover);
+    text-decoration: none;
+}
+
+a:not(.btn)::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width var(--transition-normal) ease;
+}
+
+a:not(.btn):hover::after {
+    width: 100%;
 }
 
 /* Buttons */
@@ -251,6 +298,21 @@ a:hover {
     color: white;
     border: 2px solid var(--primary);
     box-shadow: 0 4px 15px rgba(var(--primary-rgb), 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--bg);
+    transition: width 0.3s ease;
+    z-index: -1;
 }
 
 .btn-primary:hover {
@@ -258,6 +320,10 @@ a:hover {
     color: var(--primary);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
+}
+
+.btn-primary:hover::before {
+    width: 100%;
 }
 
 .btn-outline {
@@ -352,7 +418,7 @@ section {
     border-radius: var(--radius-lg);
     padding: 2rem;
     box-shadow: var(--shadow-md);
-    transition: var(--transition-normal);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -361,6 +427,31 @@ section {
     width: 100%;
     box-sizing: border-box;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover::before {
+    transform: scaleX(1);
 }
 
 .card img {
@@ -389,6 +480,28 @@ section {
 
 section:not(.hero) {
     background: var(--bg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add subtle pattern overlay to sections */
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(rgba(var(--primary-rgb), 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+section > * {
+    position: relative;
+    z-index: 1;
 }
 
 .section {
@@ -519,8 +632,8 @@ section:not(.hero) {
 
 /* Typography */
 :root {
-    --heading-font: 'Atkinson Hyperlegible', 'Alan Sans', system-ui, sans-serif;
-    --body-font: 'Ubuntu', system-ui, sans-serif;
+    --heading-font: 'Alan Sans', 'Atkinson Hyperlegible', system-ui, sans-serif;
+    --body-font: 'Ubuntu', 'Comic Relief', system-ui, sans-serif;
     --mono-font: 'Ubuntu Mono', monospace;
 
     /* Spacing */
