@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://portfolio-tbm.netlify.app/sitemap.xml
+
+# Allow all main pages
+Allow: /home
+Allow: /about
+Allow: /services
+Allow: /projects
+Allow: /experience
+Allow: /contact
+Allow: /socials
+Allow: /blog
+Allow: /testimonials
+
+# Allow CSS and JS for proper rendering
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Disallow any admin or private paths (future-proofing)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+
+# Crawl delay (optional - respectful to search engines)
+Crawl-delay: 1

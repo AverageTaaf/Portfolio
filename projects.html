@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Taafeef Bin Montaquim</title>
+    <meta name="description" content="Explore Taafeef's portfolio of web development and UI/UX design projects including Weatherify AI, TypeMaster, and TaskSchedule Pro">
+    <meta name="keywords" content="web development projects, UI/UX design portfolio, Bangladesh developer projects, weather app, typing test, task manager">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Parallax Background Elements -->
+    <div class="parallax-bg">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="/home">Taafeef</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/projects" class="active">Projects</a></li>
+                <li><a href="/experience">Experience</a></li>
+                <li><a href="/testimonials">Testimonials</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/socials">Socials</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="projects-hero">
+            <div class="container">
+                <h1 class="section-title fade-in">My Projects</h1>
+                <p class="projects-intro fade-in">A showcase of my recent work in web development, UI/UX design, and digital experiences.</p>
+                
+                <div class="projects-stats-large">
+                    <div class="stat-large">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Published Projects</span>
+                    </div>
+                    <div class="stat-large">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">In Progress</span>
+                    </div>
+                    <div class="stat-large">
+                        <span class="stat-number">9</span>
+                        <span class="stat-label">Planned</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-projects-section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="project-showcase">
+                    <div class="project-detail fade-in">
+                        <div class="project-image-large">
+                            <div class="project-placeholder-large">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-large">
+                            <h3 class="project-title">Weatherify AI - Free Weather Forecast App</h3>
+                            <p class="project-description">Weatherify delivers a dynamic weather dashboard with global coverage. Data Source: Fetches live conditions and multi-day forecasts from a public OpenWeather API. Interactive UI: Animated icons, temperature graphs, and condition-based backgrounds (rain, sun, clouds). Geo-Awareness: Supports manual search or automatic geolocation for instant local data. Optimization: Caches API calls for faster reloads and uses async/await for seamless updates.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">API Integration</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://weatherify-ai.netlify.app/" class="btn btn-primary" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-detail fade-in">
+                        <div class="project-content-large">
+                            <h3 class="project-title">TypeMaster - Free Typing Speed Test</h3>
+                            <p class="project-description">TypeMaster is an AI-assisted typing and writing platform designed for accuracy and speed. Real-Time Feedback: Grammar, syntax, and style suggestions powered by an AI language model. Performance Tracking: Live WPM (words-per-minute), accuracy stats, and historical charts for skill growth. Responsive & Accessible: Adaptive layout, dark/light themes, and ARIA roles for keyboard-only navigation. Tech Stack: Vanilla JS, modern ES modules, and REST API calls to an AI backend for instant text analysis.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">AI Integration</span>
+                                <span class="tech-tag">REST API</span>
+                                <span class="tech-tag">Responsive Design</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://typemaster-ai.netlify.app/" class="btn btn-primary" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                        <div class="project-image-large">
+                            <div class="project-placeholder-large">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-detail fade-in">
+                        <div class="project-image-large">
+                            <div class="project-placeholder-large">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-large">
+                            <h3 class="project-title">TaskSchedule Pro - Free Task Manager & Scheduler</h3>
+                            <p class="project-description">TaskSchedule Pro is a full-featured task management web app built entirely with HTML, CSS, and vanilla JavaScript, focused on speed and simplicity without a backend. Core Features: Create, edit, delete, and reorder tasks with due dates, priority flags, and status tags. Powerful filtering and sorting let users quickly surface what matters most. Persistent Data: Uses browser localStorage for instant save/load—no login or server required. Design & UX: Minimalist UI with subtle CSS animations, keyboard shortcuts, and responsive layouts for desktop and mobile.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Vanilla JS</span>
+                                <span class="tech-tag">LocalStorage</span>
+                                <span class="tech-tag">CSS Animations</span>
+                                <span class="tech-tag">Responsive Design</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://taskschedulepro.netlify.app/" class="btn btn-primary" target="_blank">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="other-projects-section">
+            <div class="container">
+                <h2 class="section-title">Other Projects</h2>
+                <div class="projects-mini-grid">
+                    <div class="project-mini-card">
+                        <h4 class="project-mini-title">Pomodoro Timer</h4>
+                        <p class="project-mini-description">Productivity timer with customizable intervals</p>
+                        <span class="project-status in-progress">In Progress</span>
+                    </div>
+                    <div class="project-mini-card">
+                        <h4 class="project-mini-title">Responsive Portfolio</h4>
+                        <p class="project-mini-description">Multi-page responsive portfolio website</p>
+                        <span class="project-status in-progress">In Progress</span>
+                    </div>
+                    <div class="project-mini-card">
+                        <h4 class="project-mini-title">Roblox Admin Panel</h4>
+                        <p class="project-mini-description">Advanced UI for Roblox Studio games</p>
+                        <span class="project-status in-progress">In Progress</span>
+                    </div>
+                    <div class="project-mini-card">
+                        <h4 class="project-mini-title">E-commerce Dashboard</h4>
+                        <p class="project-mini-description">Analytics and management interface</p>
+                        <span class="project-status planned">Planned</span>
+                    </div>
+                    <div class="project-mini-card">
+                        <h4 class="project-mini-title">Fitness Tracker</h4>
+                        <p class="project-mini-description">Workout and nutrition tracking app</p>
+                        <span class="project-status planned">Planned</span>
+                    </div>
+                    <div class="project-mini-card">
+                        <h4 class="project-mini-title">Recipe Finder</h4>
+                        <p class="project-mini-description">AI-powered recipe recommendation</p>
+                        <span class="project-status planned">Planned</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Taafeef Bin Montaquim. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/parallax.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

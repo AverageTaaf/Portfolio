@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        
+    <!-- Homepage - Highest priority -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/home</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+    <!-- About page - High priority -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/about</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Projects page - High priority -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/projects</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Services page - Medium priority -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/services</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Experience page - Medium priority -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/experience</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Contact page - Medium priority -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/contact</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Socials page - Lower priority -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/socials</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Blog page - Medium priority (will be important when you add content) -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/blog</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Testimonials page - Medium priority -->
+    <url>
+        <loc>https://portfolio-tbm.netlify.app/testimonials</loc>
+        <lastmod>2023-12-01</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+</urlset>
