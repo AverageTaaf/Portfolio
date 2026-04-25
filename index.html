@@ -382,6 +382,18 @@
       height: 14px;
     }
 
+    #theme-icon-sun {
+      display: none;
+    }
+
+    .light-mode #theme-icon-sun {
+      display: block;
+    }
+
+    .light-mode #theme-icon-moon {
+      display: none;
+    }
+
     #hero {
       min-height: 100vh;
       display: flex;
@@ -1163,7 +1175,6 @@
       padding-bottom: 12px;
       margin-bottom: 40px;
       scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
     }
 
     .modal-images::-webkit-scrollbar {
@@ -1441,7 +1452,7 @@
   <div id="menu-overlay" role="dialog" aria-label="Navigation menu">
     <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme">
       <svg id="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="5" />
         <line x1="12" y1="1" x2="12" y2="3" />
         <line x1="12" y1="21" x2="12" y2="23" />
@@ -1551,7 +1562,7 @@
             src="https://img.freepik.com/premium-photo/stunning-display-nature39s-power-vibrant-sky-with-dramatic-storm-clouds-perfect-weather-landscape-projects_506134-52567.jpg"
             alt="Weatherify AI interface showing weather forecast with AI insights" loading="lazy">
           <div class="work-item-inner">
-            <span class="work-item-category" style="color:#00FFD1">AI / Weather</span>
+            <span class="work-item-category" data-color="#00FFD1">AI / Weather</span>
             <h3 class="work-item-title">Weatherify AI</h3>
           </div>
         </article>
@@ -1560,7 +1571,7 @@
             src="https://static.vecteezy.com/system/resources/thumbnails/059/230/931/small/a-person-works-on-a-laptop-with-a-cup-of-steaming-coffee-nearby-photo.jpg"
             alt="TypeMaster AI typing test interface with real-time stats" loading="lazy">
           <div class="work-item-inner">
-            <span class="work-item-category" style="color:#FF00E5">AI / Productivity</span>
+            <span class="work-item-category" data-color="#FF00E5">AI / Productivity</span>
             <h3 class="work-item-title">TypeMaster AI</h3>
           </div>
         </article>
@@ -1569,7 +1580,7 @@
             src="https://plus.unsplash.com/premium_photo-1661493645569-ce21b164c211?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29uJTIwdHlwaW5nJTIwb24lMjBsYXB0b3B8ZW58MHwwfDB8fHww"
             alt="TaskSchedule Pro task management dashboard across devices" loading="lazy">
           <div class="work-item-inner">
-            <span class="work-item-category" style="color:#00FFD1">Productivity / SaaS</span>
+            <span class="work-item-category" data-color="#00FFD1">Productivity / SaaS</span>
             <h3 class="work-item-title">TaskSchedule Pro</h3>
           </div>
         </article>
@@ -1660,7 +1671,7 @@
       <div class="marquee-container" aria-label="Client testimonials">
         <div class="marquee-track" id="marquee-1"></div>
       </div>
-      <div class="marquee-container" style="margin-top:20px;">
+      <div class="marquee-container">
         <div class="marquee-track reverse" id="marquee-2"></div>
       </div>
     </section>
