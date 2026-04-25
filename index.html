@@ -1759,7 +1759,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
-    /* ─── Project Data (Your 3 Real Projects) ─── */
     const projects = [
       {
         title: 'Weatherify AI',
@@ -1808,7 +1807,6 @@
       }
     ];
 
-    /* ─── Testimonials (Relevant to your projects) ─── */
     const testimonials = [
       { text: '<strong>Weatherify AI is the first weather app</strong> that actually tells me what I need to know instead of making me read a data table. Check it every morning now.', name: 'Sarah Kim', role: 'Product Manager', initial: 'S' },
       { text: 'TypeMaster\'s AI adaptation is <strong>genuinely impressive.</strong> It figured out my weak spots within 5 minutes and served me exactly the right practice.', name: 'Marcus Rivera', role: 'Software Engineer', initial: 'M' },
@@ -1820,7 +1818,6 @@
 
     const adjectives = ['creative', 'bold', 'weird', 'effective', 'beautiful', 'powerful'];
 
-    /* ─── DOM Ready ─── */
     document.addEventListener('DOMContentLoaded', () => {
       initPreloader();
       initCursor();
@@ -1837,7 +1834,6 @@
       initModal();
     });
 
-    /* ─── Preloader ─── */
     function initPreloader() {
       const preloader = document.getElementById('preloader');
       const barFill = preloader.querySelector('.loader-bar-fill');
@@ -1852,7 +1848,6 @@
       });
     }
 
-    /* ─── Custom Cursor ─── */
     function initCursor() {
       const dot = document.getElementById('cursor-dot');
       const ring = document.getElementById('cursor-ring');
@@ -1878,7 +1873,6 @@
       });
     }
 
-    /* ─── Menu ─── */
     function initMenu() {
       const btn = document.getElementById('menu-btn');
       const overlay = document.getElementById('menu-overlay');
@@ -1901,7 +1895,6 @@
       });
     }
 
-    /* ─── Theme Toggle ─── */
     function initTheme() {
       const toggleBtn = document.getElementById('theme-toggle');
       const sunIcon = document.getElementById('theme-icon-sun');
@@ -1923,7 +1916,6 @@
       });
     }
 
-    /* ─── Hero Text Split ─── */
     function initHeroText() {
       const nameEl = document.querySelector('.hero-name-text');
       const name = 'Taafeef Bin Montaquim';
@@ -1932,7 +1924,6 @@
       ).join('');
     }
 
-    /* ─── Hero Animation ─── */
     function animateHero() {
       const letters = document.querySelectorAll('.hero-name .letter');
       const taglineWords = document.querySelectorAll('.hero-tagline .word');
@@ -1963,7 +1954,6 @@
       });
     }
 
-    /* ─── Marquees ─── */
     function initMarquees() {
       const m1 = document.getElementById('marquee-1');
       const m2 = document.getElementById('marquee-2');
@@ -1989,7 +1979,6 @@
       m2.innerHTML = buildCards(set2) + buildCards(set2);
     }
 
-    /* ─── Process Horizontal Scroll ─── */
     function initProcessScroll() {
       gsap.registerPlugin(ScrollTrigger);
       const track = document.querySelector('.process-track');
@@ -2004,7 +1993,6 @@
       });
     }
 
-    /* ─── Scroll Reveal ─── */
     function initRevealObserver() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -2014,7 +2002,6 @@
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }
 
-    /* ─── Rotating Adjective ─── */
     function initRotatingWord() {
       const el = document.getElementById('rotating-text');
       let idx = 0;
@@ -2030,7 +2017,6 @@
       }, 2200);
     }
 
-    /* ─── Contact Form ─── */
     function initContactForm() {
       const form = document.getElementById('contact-form');
       form.addEventListener('submit', (e) => {
@@ -2046,7 +2032,6 @@
       });
     }
 
-    /* ─── Copy Email ─── */
     function initCopyEmail() {
       document.getElementById('copy-email-btn').addEventListener('click', async () => {
         try { await navigator.clipboard.writeText('help.innovation.cct@gmail.com'); }
@@ -2059,14 +2044,12 @@
       });
     }
 
-    /* ─── Toast ─── */
     function showToast(msg) {
       const toast = document.getElementById('toast');
       toast.textContent = msg; toast.classList.add('show');
       setTimeout(() => toast.classList.remove('show'), 2800);
     }
 
-    /* ─── Work Grid Click ─── */
     function initWorkGrid() {
       document.querySelectorAll('.work-item').forEach(item => {
         item.addEventListener('click', () => openModal(parseInt(item.dataset.project)));
@@ -2077,7 +2060,6 @@
       });
     }
 
-    /* ─── Modal ─── */
     function initModal() {
       document.getElementById('modal-close').addEventListener('click', closeModal);
       document.getElementById('project-modal').addEventListener('click', (e) => { if (e.target === e.currentTarget) closeModal(); });
@@ -2099,7 +2081,6 @@
       let html = p.images.map(src => `<img src="${src}" alt="${p.title} screenshot" loading="lazy">`).join('');
       imagesContainer.innerHTML = html;
 
-      /* Set the "Visit Live" link to the actual project URL */
       const visitBtn = document.getElementById('modal-visit');
       visitBtn.href = p.url;
 
@@ -2114,7 +2095,6 @@
       document.body.style.overflow = '';
     }
 
-    /* ─── Resize handler ─── */
     let resizeTimer;
     window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => ScrollTrigger.refresh(), 250); });
   </script>
