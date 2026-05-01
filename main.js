@@ -549,4 +549,129 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("30 Seconds! You're the curious type.");
     }
   }, 30000);
+
+  // --- 12. Chatbot Logic ---
+  const chatButton = document.getElementById("chatbot-button");
+  const chatWindow = document.getElementById("chat-window");
+  const closeChat = document.getElementById("close-chat");
+  const chatInput = document.getElementById("chat-input");
+  const sendChat = document.getElementById("send-chat");
+  const chatMessages = document.getElementById("chat-messages");
+
+  const botResponses = {
+    greeting: [
+      "Hi there! I'm Aura, Taafeef's digital companion. How's your day going?",
+      "Hello! Ready to explore some cool projects?",
+      "Greetings! I can help you find your way around this portfolio.",
+    ],
+    projects:
+      "Taafeef has some amazing work! You should check out **Weatherify AI** or **LocalFlow Calendar**. Which one sounds more interesting?",
+    contact:
+      "You can unlock Taafeef's email by solving the riddle in the 'Let's Connect' section. It's a bit of a challenge, but I know you can do it!",
+    skills:
+      "Taafeef is a wizard with **JavaScript**, **React**, and **CSS**. He also loves playing with **Three.js** for 3D experiences!",
+    about:
+      "Taafeef is a Creative Front-End Developer and UI/UX Architect based on Earth. He dreams in CSS variables!",
+    joke: [
+      "Why did the web developer walk out of a restaurant? Because of the table layout.",
+      "A SQL query walks into a bar, walks up to two tables, and asks, 'Can I join you?'",
+      "Why do programmers always mix up Christmas and Halloween? Because Oct 31 == Dec 25.",
+    ],
+    default:
+      "That's interesting! I'm still learning, but you can ask me about projects, skills, or how to contact Taafeef.",
+  };
+
+  function showTypingIndicator() {
+    const indicator = document.createElement("div");
+    indicator.className = "typing-indicator";
+    indicator.id = "typing-indicator";
+    indicator.innerHTML = `
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    `;
+    chatMessages.appendChild(indicator);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return indicator;
+  }
+
+  function addMessage(text, isBot = false) {
+    const messageDiv = document.createElement("div");
+    messageDiv.className = `message ${isBot ? "bot-message" : "user-message"}`;
+    messageDiv.innerHTML = text;
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    playPopSound();
+  }
+
+  function getBotResponse(input) {
+    const text = input.toLowerCase();
+    if (text.includes("hello") || text.includes("hi") || text.includes("hey")) {
+      return botResponses.greeting[
+        Math.floor(Math.random() * botResponses.greeting.length)
+      ];
+    }
+    if (text.includes("project") || text.includes("work")) {
+      return botResponses.projects;
+    }
+    if (
+      text.includes("contact") ||
+      text.includes("email") ||
+      text.includes("hire")
+    ) {
+      return botResponses.contact;
+    }
+    if (
+      text.includes("skill") ||
+      text.includes("tech") ||
+      text.includes("stack")
+    ) {
+      return botResponses.skills;
+    }
+    if (
+      text.includes("who") ||
+      text.includes("about") ||
+      text.includes("taafeef")
+    ) {
+      return botResponses.about;
+    }
+    if (text.includes("joke") || text.includes("funny")) {
+      return botResponses.joke[
+        Math.floor(Math.random() * botResponses.joke.length)
+      ];
+    }
+    return botResponses.default;
+  }
+
+  function handleChat() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    addMessage(text, false);
+    chatInput.value = "";
+
+    const typingIndicator = showTypingIndicator();
+
+    setTimeout(() => {
+      typingIndicator.remove();
+      const response = getBotResponse(text);
+      addMessage(response, true);
+    }, 1500); // Slightly longer for more realism
+  }
+
+  chatButton.addEventListener("click", () => {
+    chatWindow.classList.toggle("active");
+    if (chatWindow.classList.contains("active")) {
+      chatInput.focus();
+    }
+  });
+
+  closeChat.addEventListener("click", () => {
+    chatWindow.classList.remove("active");
+  });
+
+  sendChat.addEventListener("click", handleChat);
+  chatInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") handleChat();
+  });
 });
